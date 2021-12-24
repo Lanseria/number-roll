@@ -113,20 +113,20 @@ const rotateFlagUpdate = (itemstr: string, index: number) => {
 </script>
 
 <template>
-  <div class="InputWrapper">
+  <div class="input-wrapper">
     <div
-      class="Stage"
+      class="stage"
       v-for="(item, index) in String(totalValue).split('')"
       :key="index"
     >
       <div
-        class="Wrapper"
+        class="wrapper"
         :style="{
           transform: `rotateX(${rotateFlagUpdate(item, index)}deg)`,
         }"
       >
         <div
-          class="NumberWrapper"
+          class="number-wrapper"
           v-for="(t, index) in numbersConfig[index]"
           :key="index"
           :style="{ transform: `rotateX(${t.rotateX}deg) translateZ(40px)` }"
@@ -139,20 +139,21 @@ const rotateFlagUpdate = (itemstr: string, index: number) => {
 </template>
 
 <style scoped>
-.InputWrapper {
+.input-wrapper {
   display: flex;
   width: 200px;
   height: 40px;
   position: relative;
 }
-.Stage {
+.stage {
+  z-index: 1;
   width: 20px;
   height: 40px;
   overflow: hidden;
   perspective: 300px;
   position: relative;
 }
-.Wrapper {
+.wrapper {
   position: absolute;
   left: 50%;
   transform-style: preserve-3d;
@@ -160,7 +161,7 @@ const rotateFlagUpdate = (itemstr: string, index: number) => {
   /* transform: ${props => `rotateX(${props.x}deg)`}; */
   transition: opacity 1s, transform 1s;
 }
-.NumberWrapper {
+.number-wrapper {
   position: absolute;
   backface-visibility: hidden;
   text-align: center;
